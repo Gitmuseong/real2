@@ -30,7 +30,7 @@ exng_map = {
 }
 
 # 사용자 입력 받기 (글자로 보이도록)
-age = st.slider("나이", 20, 100, 50)
+age = st.slider("나이", 15, 80, 30)
 sex = st.radio("성별", [0, 1], format_func=lambda x: "여성" if x == 0 else "남성")
 cp = st.selectbox("가슴 통증 유형", [0, 1, 2, 3], format_func=lambda x: cp_map[x])
 trtbps = st.number_input("휴식 혈압", 90, 200, 120)
