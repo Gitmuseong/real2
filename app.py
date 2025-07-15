@@ -40,7 +40,7 @@ exng_map = {0: "운동 중 협심증 없음", 1: "운동 중 협심증 있음"}
 st_slope_map = {0: "오르막 (upsloping)", 1: "평탄 (flat)", 2: "내리막 (downsloping)"}
 
 # ===== 사용자 입력 받기 =====
-age = st.slider("나이", 19, 80, 40)
+age = st.slider("나이", 20, 80, 50)
 sex = st.radio("성별", [0,1], format_func=lambda x: "여성" if x==0 else "남성")
 cp = st.selectbox("가슴 통증 유형", [0,1,2,3], format_func=lambda x: cp_map[x])
 trtbps = st.number_input("휴식 혈압", 90, 200, 120)
