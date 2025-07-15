@@ -12,7 +12,7 @@ with st.expander("협심증(Angina)란?"):
     운동하거나 스트레스 받을 때 증상이 심해질 수 있고, 심장병 위험 신호 중 하나입니다.
     """)
 
-with st.expander("Oldpeak와 ST 저하란?"):
+with st.expander("Oldpeak란?"):
     st.write("""
     운동 중 또는 운동 후 심전도(심장 전기 신호)에서 측정하는 값입니다.
 
