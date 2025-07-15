@@ -3,7 +3,7 @@ import pandas as pd
 import joblib
 
 st.set_page_config(page_title="심장병 예측 앱", layout="centered")
-st.title("🫀 심장병 예측 앱")
+st.title("🫀 심장병 예측")
 
 # ===== 변수 설명용 확장 패널 =====
 with st.expander("협심증(Angina)란?"):
@@ -14,9 +14,16 @@ with st.expander("협심증(Angina)란?"):
 
 with st.expander("Oldpeak와 ST 저하란?"):
     st.write("""
-    운동 후 심전도 ST 분절이 내려가는 정도를 나타냅니다.  
-    심장에 산소 공급이 부족할 때 나타날 수 있어 협심증이나 심장질환 위험 신호입니다.
+    운동 중 또는 운동 후 심전도(심장 전기 신호)에서 측정하는 값입니다.
+
+    심장이 운동할 때 더 많은 산소를 필요로 하게 되는데, 심장 근육에 산소 공급이 부족하면 심전도 신호 중 ST 분절이라는 부분이 내려가게 됩니다.
+    이 내려가는 정도를 숫자로 나타낸 것이 바로 Oldpeak입니다.
+    Oldpeak 값이 클수록 심장에 산소가 부족한 상태가 더 심하다는 뜻입니다.
+    ST 저하는 심장 근육에 혈액 공급이 원활하지 않아 발생하는 전기 신호 변화로, 협심증이나 심장 질환의 중요한 징후입니다.
+
+    쉽게 말해, Oldpeak는 운동 후 심장이 얼마나 스트레스를 받았는지를 보여주는 지표입니다.
     """)
+
 
 with st.expander("ST Slope 의미"):
     st.write("""
