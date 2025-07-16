@@ -70,29 +70,24 @@ st.write(f"ST Slope: {st_slope_map[st_slope]}")
 model = joblib.load("model.pkl")
 
 # ===== 예측용 데이터프레임 생성 =====
-input_data = pd.DataFrame([[
-    age, sex, cp, trtbps, chol, fbs, restecg, thalachh, exng, oldpeak, st_slope
-]], columns=["Age","Sex","ChestPainType","RestingBP","Cholesterol",
+input_data = pd.DataFrame([[age, sex, cp, trtbps, chol, fbs, restecg, thalachh, exng, oldpeak, st_slope]],
+    columns=["Age","Sex","ChestPainType","RestingBP","Cholesterol",
              "FastingBS","RestingECG","MaxHR","ExerciseAngina","Oldpeak","ST_Slope"])
 
-# ===== 입력 데이터 원-핫 인코딩 =====
+# ===== 인코딩 및 컬럼 정렬 =====
 input_data_encoded = pd.get_dummies(input_data)
-
-# ===== 모델 학습 시 컬럼명 가져오기 =====
 model_columns = model.feature_names_in_
-
-# ===== 없는 컬럼은 0으로 채우기 =====
 for col in model_columns:
     if col not in input_data_encoded.columns:
         input_data_encoded[col] = 0
-
-# ===== 컬럼 순서 모델 컬럼명과 맞추기 =====
 input_data_encoded = input_data_encoded[model_columns]
 
-# ===== 예측 실행 및 결과 출력 =====
+# ===== 예측 및 확률 기반 결과 출력 =====
 if st.button("예측하기"):
-    pred = model.predict(input_data_encoded)[0]
-    if pred == 1:
+    proba = model.predict_proba(input_data_encoded)[0][1]
+    st.write(f"🔎 예측된 심장병 위험 확률: **{proba:.2%}**")
+
+    if proba >= 0.5:
         st.error("⚠️ 심장병 위험이 있습니다. 의사와 상담하세요.")
     else:
         st.success("✅ 심장병 위험이 없습니다.")
